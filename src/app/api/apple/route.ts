@@ -13,7 +13,9 @@ const resolveCert = (fileName: string, envVarName: string): string => {
   // 1. Try Environment Variable (Production/Vercel)
   if (process.env[envVarName]) {
     const tempPath = path.join(os.tmpdir(), fileName);
-    fs.writeFileSync(tempPath, process.env[envVarName] as string);
+    // Replace escaped newlines with real newlines (Vercel stores them escaped)
+    const certContent = process.env[envVarName]!.replace(/\\n/g, '\n');
+    fs.writeFileSync(tempPath, certContent);
     return tempPath;
   }
 
