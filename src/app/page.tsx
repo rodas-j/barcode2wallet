@@ -193,19 +193,18 @@ export default function Home() {
                   />
                 </button>
 
-                <button
-                  onClick={generateGooglePass}
-                  disabled={loading}
-                  className="h-12 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-opacity hover:opacity-80"
-                >
-                  <Image
-                    src="/add-to-google-wallet.svg"
-                    alt="Add to Google Wallet"
-                    width={200}
-                    height={48}
-                    className="h-12 w-auto"
-                  />
-                </button>
+                <div className="flex flex-col items-center gap-1">
+                  <div className="relative">
+                    <Image
+                      src="/add-to-google-wallet.svg"
+                      alt="Add to Google Wallet"
+                      width={200}
+                      height={48}
+                      className="h-12 w-auto opacity-40 grayscale"
+                    />
+                  </div>
+                  <span className="text-xs text-muted-foreground">Coming soon</span>
+                </div>
               </div>
 
               <Button
