@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# barcode2wallet
 
-## Getting Started
+A Next.js application to digitize physical barcode cards into Apple Wallet and Google Wallet passes.
 
-First, run the development server:
+## Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1.  **Node.js** (v18+)
+2.  **Apple Developer Account** (For Apple Wallet)
+3.  **Google Pay Issuer Account** (For Google Wallet)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1.  Install dependencies:
+    ```bash
+    npm install
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2.  **Certificates (Crucial Step)**:
+    To generate valid `.pkpass` files, you must place your Apple certificates in the `certs/` folder at the root of the project.
+    
+    *   `certs/wwdr.pem`: Apple Worldwide Developer Relations Certificate.
+    *   `certs/signerCert.pem`: Your Pass Type ID Certificate.
+    *   `certs/signerKey.pem`: The private key for your certificate.
 
-## Learn More
+    > **Note:** Do not commit these files to Git!
 
-To learn more about Next.js, take a look at the following resources:
+3.  Run the development server:
+    ```bash
+    npm run dev
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4.  Open `http://localhost:3000` on your phone (or a device with a camera).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## How it works
 
-## Deploy on Vercel
+1.  **Scan:** Use the camera to scan a barcode from a physical card.
+2.  **Label:** Give the card a name (e.g., "Library Card").
+3.  **Generate:** Click the button to download the pass.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Troubleshooting
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*   **Scanner not working?** Ensure you have granted camera permissions to the browser.
+*   **"Missing Certificates" error?** You cannot generate a real Apple Wallet pass without valid certificates signed by Apple. This is a security requirement by Apple.
