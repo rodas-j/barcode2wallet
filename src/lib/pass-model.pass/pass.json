@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
-  "passTypeIdentifier": "pass.com.barcode2wallet",
+  "passTypeIdentifier": "pass.com.rodasjateno.walletdigitizer",
   "serialNumber": "123456",
-  "teamIdentifier": "ABC1234567",
+  "teamIdentifier": "3D9K4J9N8V",
   "organizationName": "Barcode to Wallet",
   "description": "Digital Barcode Pass",
   "logoText": "Barcode to Wallet",
