@@ -59,7 +59,7 @@ const mapBarcodeFormat = (scannedFormat: string = ""): BarcodeFormat => {
 
 export async function POST(req: NextRequest) {
   try {
-    const { barcode, format, location, backgroundColor } = await req.json();
+    const { barcode, format, location, backgroundColor, label } = await req.json();
 
     if (!barcode) {
       return NextResponse.json({ message: "Barcode required" }, { status: 400 });
@@ -98,6 +98,8 @@ export async function POST(req: NextRequest) {
     }, {
       serialNumber: uuidv4(),
       backgroundColor: hexToRgb(backgroundColor || "#60a389"),
+      logoText: label || "My Card",
+      description: label || "Digital Barcode Pass",
     });
 
     // Set barcode using the API method

@@ -276,13 +276,11 @@ const Scanner: React.FC<ScannerProps> = ({ onScan }) => {
           result = await tempScanner.scanFile(file, false);
         } catch {
           // If original fails, try processed/compressed version (better for mobile)
-          console.log("Original scan failed, trying compressed version...");
           const processedFile = await processImage(file);
           result = await tempScanner.scanFile(processedFile, false);
         }
 
         if (result) {
-          console.log("Scan result:", result);
           onScan(result, undefined);
         }
       } finally {
